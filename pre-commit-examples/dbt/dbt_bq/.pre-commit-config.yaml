@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=https://www.schemastore.org/pre-commit-config.json
+repos:
+  - repo: https://github.com/dbt-checkpoint/dbt-checkppoint
+    rev: v2.0.6
+    hooks:
+      - id: check-script-has-no-table-name
+        files: ^dbt_bq/models/
+      - id: check-script-ref-and-source
+        files: ^dbt_bq/models/
+      - id: check-model-has-properties-files
+        files: ^dbt_bq/models/
+      - id: check-model-columns-have-desc
+        files: ^dbt_bq/models/
+      - id: check-model-has-description
+        files: ^dbt_bq/models/
+      - id: check-model-has-contract
+        files: ^dbt_bq/models
+
+      - id: check-macro-has-description
+        files: ^dbt_bq/macros/
+      - id: check-macro-arguments-have-desc
+        files: ^dbt_bq/macros/
+
+  - repo: https://github.com/sqlfluff/sqlfluff
+    rev: "3.1.0"
+    hooks:
+      - id: sqlfluff-lint
+        additional_dependencies:
+          - "dbt-bigquery==1.8.2"
+          - "sqlfluff-templater-dbt==3.1.0"
+        args:
+          - --config=dbt_bq/.sqlfluff
+      - id: sqlfluff-fix
+        additional_dependencies:
+          - "dbt-bigquery==1.8.2"
+          - "sqlfluff-templater-dbt==3.1.0"
+        args:
+          - --config=dbt_bq/.sqlfluff
