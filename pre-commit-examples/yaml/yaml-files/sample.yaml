@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=https://www.schemastore.org/workflows.json
+main:
+  steps:
+    - set-params:
+        assign:
+          - number: 3
+          - text: test

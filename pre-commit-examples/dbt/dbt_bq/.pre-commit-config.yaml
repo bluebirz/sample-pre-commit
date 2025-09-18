@@ -7,7 +7,7 @@ repos:
         files: ^dbt_bq/models/
       - id: check-script-ref-and-source
         files: ^dbt_bq/models/
-      - id: check-model-has-properties-files
+      - id: check-model-has-properties-file
         files: ^dbt_bq/models/
       - id: check-model-columns-have-desc
         files: ^dbt_bq/models/
@@ -26,13 +26,13 @@ repos:
     hooks:
       - id: sqlfluff-lint
         additional_dependencies:
-          - "dbt-bigquery==1.8.2"
-          - "sqlfluff-templater-dbt==3.1.0"
+          - "dbt-bigquery"
+          - "sqlfluff-templater-dbt"
         args:
-          - --config=dbt_bq/.sqlfluff
+          - --config=.sqlfluff
       - id: sqlfluff-fix
         additional_dependencies:
-          - "dbt-bigquery==1.8.2"
-          - "sqlfluff-templater-dbt==3.1.0"
+          - "dbt-bigquery"
+          - "sqlfluff-templater-dbt"
         args:
-          - --config=dbt_bq/.sqlfluff
+          - --config=.sqlfluff
