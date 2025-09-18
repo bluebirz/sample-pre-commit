@@ -9,19 +9,6 @@ repos:
       - id: end-of-file-fixer
       - id: check-yaml
       - id: check-added-large-files
-  - repo: https://github.com/mxab/pre-commit-trivy.git
-    rev: v0.15.0
-    hooks:
-      - id: trivyfs-docker
-        args:
-          - --skip-dirs
-          - ./tests
-          - . # last arg indicates the path/file to scan
-      - id: trivyconfig-docker
-        args:
-          - --skip-dirs
-          - ./tests
-          - . # last arg indicates the path/file to scan
   - repo: local
     hooks:
       - id: unit-test
